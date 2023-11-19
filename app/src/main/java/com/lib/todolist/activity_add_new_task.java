@@ -52,7 +52,7 @@ public class activity_add_new_task extends AppCompatActivity {
                 Date date = sdf.parse(dateString);
 
                 if (!description.isEmpty()) {
-                    prefs = getSharedPreferences(DATA, Context.MODE_PRIVATE);
+                    prefs = getSharedPreferences(MainActivity.DATA, Context.MODE_PRIVATE);
                     editor = prefs.edit();
                     Task newTask = new Task(description, status, date);
                     List<Task> preTasks = loadTasksFromSharedPreferences(); //previous tasks in the shaerdpref
@@ -70,7 +70,6 @@ public class activity_add_new_task extends AppCompatActivity {
         });
 
     }
-
 
     private List<Task> loadTasksFromSharedPreferences() {
         Gson gson = new Gson();
