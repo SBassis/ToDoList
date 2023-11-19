@@ -56,17 +56,17 @@ public class MainActivity extends AppCompatActivity {
                 if (convertView == null) {
                     convertView = getLayoutInflater().inflate(R.layout.listview_items, parent, false);
                 }
-                TextView descriptionTextView = convertView.findViewById(R.id.taskDescription);
-                TextView dateTextView = convertView.findViewById(R.id.taskDate);
-                Switch statusSwitch = convertView.findViewById(R.id.taskStatusSwitch);
-                statusSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                TextView desctv = convertView.findViewById(R.id.taskDescription);
+                TextView datetv = convertView.findViewById(R.id.taskDate);
+                Switch Switch = convertView.findViewById(R.id.taskStatus);
+                Switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         Task currentTask = getItem(position);
                         if (currentTask != null) {
                             currentTask.setStatus(isChecked);
                             if (isChecked) {
-                                taskList.remove(currentTask);//remove if completed
+                                taskList.remove(currentTask);//remove if completed .. true
                             }
                             saveTasksToSharedPreferences(taskList);
                             notifyDataSetChanged();
@@ -77,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
                 Task currentTask = getItem(position);
 
                 if (currentTask != null) {
-                    descriptionTextView.setText("Task Description: " + currentTask.getDescription());
-                    statusSwitch.setChecked(currentTask.isStatus());
+                    desctv.setText("Task Description: " + currentTask.getDescription());
+                    Switch.setChecked(currentTask.isStatus());
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    dateTextView.setText("Task Date: " + dateFormat.format(currentTask.getDate()));
+                    datetv.setText("Task Date: " + dateFormat.format(currentTask.getDate()));
                 }
 
                 return convertView;
@@ -131,9 +131,6 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(DATA, tasksJson);
         editor.commit();
     }
-
-
-
 
     private List<Task> loadTasksFromSharedPreferences() {
         Gson gson = new Gson();

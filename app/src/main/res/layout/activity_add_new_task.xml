@@ -19,24 +19,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/editTextTaskDescription"
+            android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Task Description" />
 
         <Switch
-            android:id="@+id/switchTaskStatus"
+            android:id="@+id/switchStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editTextTaskDescription"
+            android:layout_below="@id/etDescription"
             android:layout_marginTop="16dp"
             android:text="Task Status" />
 
         <EditText
-            android:id="@+id/editTextTaskDate"
+            android:id="@+id/etTaskDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/switchTaskStatus"
+            android:layout_below="@id/switchStatus"
             android:layout_marginTop="16dp"
 
             android:inputType="date"
@@ -47,7 +47,7 @@
             android:id="@+id/savebtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/switchTaskStatus"
+            android:layout_below="@id/switchStatus"
             android:layout_marginTop="78dp"
             android:background="#671E7B"
             android:text="Save Task" />

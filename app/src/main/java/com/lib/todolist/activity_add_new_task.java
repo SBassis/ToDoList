@@ -35,18 +35,18 @@ public class activity_add_new_task extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_task);
 
-        EditText editTextTaskDescription = findViewById(R.id.editTextTaskDescription);
-        Switch switchTaskStatus = findViewById(R.id.switchTaskStatus);
-        EditText editTextTaskDate = findViewById(R.id.editTextTaskDate);
+        EditText TaskDescription = findViewById(R.id.etDescription);
+        Switch TaskStatus = findViewById(R.id.switchStatus);
+        EditText TaskDueDate = findViewById(R.id.etTaskDate);
         Button SaveTaskBtn = findViewById(R.id.savebtn);
 
       //  setupSharedPrefs();
 
         SaveTaskBtn.setOnClickListener(view -> {
 
-                String description = editTextTaskDescription.getText().toString();
-                boolean status = switchTaskStatus.isChecked();
-                String dateString = editTextTaskDate.getText().toString();
+                String description = TaskDescription.getText().toString();
+                boolean status = TaskStatus.isChecked();
+                String dateString = TaskDueDate.getText().toString();
             try {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 Date date = sdf.parse(dateString);
@@ -55,14 +55,13 @@ public class activity_add_new_task extends AppCompatActivity {
                     prefs = getSharedPreferences(DATA, Context.MODE_PRIVATE);
                     editor = prefs.edit();
                     Task newTask = new Task(description, status, date);
-                    List<Task> existingTasks = loadTasksFromSharedPreferences();
-                    existingTasks.add(newTask);
-                    saveTasksToSharedPreferences(existingTasks);
-                    Toast.makeText(activity_add_new_task.this, "Task added", Toast.LENGTH_SHORT).show();
-                    finish();
-
+                    List<Task> preTasks = loadTasksFromSharedPreferences(); //previous tasks in the shaerdpref
+                    preTasks.add(newTask);
+                    saveTasksToSharedPreferences(preTasks);
+                    Toast.makeText(activity_add_new_task.this, "Task added!", Toast.LENGTH_SHORT).show();
+                    finish(); //close and back to main
                 } else {
-                    Toast.makeText(activity_add_new_task.this, "Description is empty!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity_add_new_task.this, "Enter The Description!", Toast.LENGTH_SHORT).show();
                 }
 
             } catch (ParseException e) {
@@ -70,13 +69,6 @@ public class activity_add_new_task extends AppCompatActivity {
             }
         });
 
-    }
-
-
-
-    private void setupSharedPrefs() {
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        editor = prefs.edit();
     }
 
 
@@ -97,7 +89,7 @@ public class activity_add_new_task extends AppCompatActivity {
         Gson gson = new Gson();
         String tasksJson = gson.toJson(taskList);
         editor.putString(DATA, tasksJson);
-        editor.apply();
+        editor.commit();
     }
 
 

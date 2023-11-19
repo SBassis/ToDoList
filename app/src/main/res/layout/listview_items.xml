@@ -22,7 +22,7 @@
         android:textColor="#671E7B"/>
 
     <Switch
-        android:id="@+id/taskStatusSwitch"
+        android:id="@+id/taskStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Completed"
