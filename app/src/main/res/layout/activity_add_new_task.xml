@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#AF9FCC"
+    tools:context=".activity_add_new_task">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/editTextTaskDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Task Description" />
+
+        <Switch
+            android:id="@+id/switchTaskStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextTaskDescription"
+            android:layout_marginTop="16dp"
+            android:text="Task Status" />
+
+        <EditText
+            android:id="@+id/editTextTaskDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/switchTaskStatus"
+            android:layout_marginTop="16dp"
+
+            android:inputType="date"
+            android:hint="Task Date (ex: 22-12-2023)"
+            />
+
+        <Button
+            android:id="@+id/savebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/switchTaskStatus"
+            android:layout_marginTop="78dp"
+            android:background="#671E7B"
+            android:text="Save Task" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
