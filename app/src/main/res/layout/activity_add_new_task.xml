@@ -7,6 +7,8 @@
     android:background="#AF9FCC"
     tools:context=".activity_add_new_task">
 
+
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="0dp"
@@ -17,6 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <EditText
             android:id="@+id/etDescription"
@@ -30,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/etDescription"
             android:layout_marginTop="16dp"
+            android:visibility="gone"
             android:text="Task Status" />
 
         <EditText
@@ -38,8 +42,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/switchStatus"
             android:layout_marginTop="16dp"
-
+            android:onClick="showCalender"
             android:inputType="date"
+            android:focusable="false"
             android:hint="Task Date (ex: 22-12-2023)"
             />
 
@@ -51,6 +56,7 @@
             android:layout_marginTop="78dp"
             android:background="#671E7B"
             android:text="Save Task" />
+
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
